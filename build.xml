@@ -1,4 +1,4 @@
-<project name="httpclient" basedir=".">
+<project name="br.maplink.webservices.places.client" basedir=".">
 
 	<property file="build.properties" />
 
