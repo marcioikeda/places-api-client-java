@@ -1,27 +1,17 @@
 package br.maplink.webservices.places.client.wrapper;
 
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-
-import com.sun.xml.internal.messaging.saaj.packaging.mime.internet.MimeUtility;
+import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
 
 public class Base64EncoderImpl implements Base64Encoder {
 
 	@Override
 	public String encode(String content) throws Exception {
-		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        
-		OutputStream base64OutputStream = MimeUtility.encode(outputStream, "base64");
-        
-		base64OutputStream.write(content.getBytes());
-        base64OutputStream.close();
-        
-        return outputStream.toString();
+		return new BASE64Encoder().encode(content.getBytes());
 	}
 
 	@Override
-	public String deconde(String contentInBase64) {
-		// TODO Auto-generated method stub
-		return null;
+	public String decode(String contentInBase64) throws Exception {
+		return new String(new BASE64Decoder().decodeBuffer(contentInBase64));
 	}
 }

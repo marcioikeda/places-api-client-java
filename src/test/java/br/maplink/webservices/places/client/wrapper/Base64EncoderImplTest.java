@@ -19,4 +19,10 @@ public class Base64EncoderImplTest {
 		assertThat(encoder.encode("my-content"))
 			.isEqualTo("bXktY29udGVudA==");
 	}
+	
+	@Test
+	public void shouldDecodeFromBase64() throws Exception {
+		assertThat(encoder.decode("bXktY29udGVudA=="))
+			.isEqualTo("my-content");
+	}
 }
