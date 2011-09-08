@@ -7,7 +7,7 @@ import static org.fest.assertions.Assertions.assertThat;
 
 public class Base64EncoderImplTest {
 
-	private Base64EncoderImpl encoder;
+	private Base64Encoder encoder;
 
 	@Before
 	public void setUp() {
