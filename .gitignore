@@ -1,6 +1,12 @@
-bin/
+bin
+package
+Servers
+temp
+TEST-*
 .classpath
 .project
+.settings
+.metadata
 *~
 *.lock
 *.DS_Store
