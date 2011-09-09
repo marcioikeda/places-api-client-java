@@ -4,6 +4,6 @@ import java.util.GregorianCalendar;
 
 public interface DateConverter {
 
-	public abstract String toRfc1123(GregorianCalendar date);
+	public abstract String toRfc1132(GregorianCalendar date);
 
 }

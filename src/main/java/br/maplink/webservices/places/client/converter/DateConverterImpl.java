@@ -7,7 +7,7 @@ import java.util.TimeZone;
 public class DateConverterImpl implements DateConverter {
 
 	@Override
-	public String toRfc1123(GregorianCalendar date) {
+	public String toRfc1132(GregorianCalendar date) {
 		SimpleDateFormat dateFormatGmt = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z");
 		dateFormatGmt.setTimeZone(TimeZone.getTimeZone("GMT"));
 		
