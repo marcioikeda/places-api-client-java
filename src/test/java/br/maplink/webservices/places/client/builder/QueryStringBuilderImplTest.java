@@ -1,4 +1,4 @@
-package br.maplink.webservices.places.client.helper;
+package br.maplink.webservices.places.client.builder;
 
 import static org.fest.assertions.Assertions.assertThat;
 
@@ -7,6 +7,9 @@ import java.util.HashMap;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import br.maplink.webservices.places.client.builder.QueryStringBuilder;
+import br.maplink.webservices.places.client.builder.QueryStringBuilderImpl;
 
 public class QueryStringBuilderImplTest {
 
