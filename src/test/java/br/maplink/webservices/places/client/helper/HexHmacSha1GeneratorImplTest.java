@@ -1,4 +1,4 @@
-package br.maplink.webservices.places.client.wrapper;
+package br.maplink.webservices.places.client.helper;
 
 import static org.fest.assertions.Assertions.assertThat;
 
@@ -6,6 +6,8 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
 import org.junit.Test;
+
+import br.maplink.webservices.places.client.helper.HexHmacSha1GeneratorImpl;
 
 public class HexHmacSha1GeneratorImplTest {
 	

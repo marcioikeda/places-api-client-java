@@ -1,4 +1,4 @@
-package br.maplink.webservices.places.client.wrapper;
+package br.maplink.webservices.places.client.helper;
 
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;

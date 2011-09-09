@@ -1,7 +1,10 @@
-package br.maplink.webservices.places.client.wrapper;
+package br.maplink.webservices.places.client.helper;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import br.maplink.webservices.places.client.helper.Base64Encoder;
+import br.maplink.webservices.places.client.helper.Base64EncoderImpl;
 
 import static org.fest.assertions.Assertions.assertThat;
 

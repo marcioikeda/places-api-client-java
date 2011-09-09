@@ -13,8 +13,8 @@ import java.security.NoSuchAlgorithmException;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.maplink.webservices.places.client.wrapper.Base64Encoder;
-import br.maplink.webservices.places.client.wrapper.HexHmacSha1Generator;
+import br.maplink.webservices.places.client.helper.Base64Encoder;
+import br.maplink.webservices.places.client.helper.HexHmacSha1Generator;
 
 public class AuthorizationBuilderImplTest {
 	

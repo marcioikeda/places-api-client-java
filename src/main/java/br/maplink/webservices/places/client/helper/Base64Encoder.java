@@ -1,4 +1,4 @@
-package br.maplink.webservices.places.client.wrapper;
+package br.maplink.webservices.places.client.helper;
 
 public interface Base64Encoder {
 
