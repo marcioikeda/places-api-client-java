@@ -47,6 +47,7 @@ public class UriBuilderImplTest {
 		verify(mockedQueryStringBuilder, times(1)).build(parameters);
 	}
 
+	@SuppressWarnings("unchecked")
 	private void givenQueryStringWereBuilt() throws UnsupportedEncodingException {
 		when(mockedQueryStringBuilder.build((HashMap<String, String>) isA(HashMap.class)))
 			.thenReturn(QUERY_STRING_BUILT);
