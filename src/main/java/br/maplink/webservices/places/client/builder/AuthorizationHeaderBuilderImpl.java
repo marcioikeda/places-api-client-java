@@ -25,7 +25,7 @@ public class AuthorizationHeaderBuilderImpl implements AuthorizationHeaderBuilde
 			String rfc1132Date, 
 			String uri, 
 			String licenseLogin, 
-			String licenseKey) throws Exception {
+			String licenseKey) throws InvalidKeyException, NoSuchAlgorithmException{
 		
 		String signatureContent = createSignatureContent(rfc1132Date, uri, licenseLogin);
 		
@@ -37,7 +37,7 @@ public class AuthorizationHeaderBuilderImpl implements AuthorizationHeaderBuilde
 	}
 
 	private String generateAuthorizationBase(String licenseLogin,
-			String generatedSignature) throws Exception {
+			String generatedSignature) {
 		return base64Encoder
 			.encode(
 				String.format(
