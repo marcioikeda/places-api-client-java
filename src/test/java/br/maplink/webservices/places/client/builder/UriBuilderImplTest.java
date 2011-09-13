@@ -18,6 +18,7 @@ public class UriBuilderImplTest {
 	private static final String HOST = "host";
 	private static final String PATH = "path";
 	private static final String QUERY_STRING_BUILT = "query-string-built";
+	private static final String PATH_AND_QUERY = "path-and-query";
 	private QueryStringBuilder mockedQueryStringBuilder;
 	private UriBuilder uriBuilder;
 	private HashMap<String, String> parameters;
@@ -45,6 +46,12 @@ public class UriBuilderImplTest {
 		uriBuilder.build(HOST, PATH, parameters);
 
 		verify(mockedQueryStringBuilder, times(1)).build(parameters);
+	}
+	
+	@Test
+	public void shouldBuildUriWithHostAndPathAndQuery() {
+		assertThat(uriBuilder.build(HOST, PATH_AND_QUERY))
+			.isEqualTo("hostpath-and-query");
 	}
 
 	@SuppressWarnings("unchecked")

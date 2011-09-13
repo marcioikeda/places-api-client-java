@@ -18,5 +18,10 @@ public class UriBuilderImpl implements UriBuilder {
 			host,
 			path,
 			queryStringBuilder.build(parameters));
-}
+	}
+
+	@Override
+	public String build(String host, String pathAndQuery) {
+		return String.format("%1$s%2$s", host, pathAndQuery);
+	}
 }

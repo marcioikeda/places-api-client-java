@@ -8,5 +8,6 @@ public interface UriBuilder {
 	public abstract String build(String host, String path,
 			HashMap<String, String> parameters)
 			throws UnsupportedEncodingException;
-
+	
+	public abstract String build(String host, String pathAndQuery);
 }
