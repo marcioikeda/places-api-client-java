@@ -16,7 +16,7 @@ import org.junit.Test;
 import br.maplink.webservices.places.client.helper.Base64Encoder;
 import br.maplink.webservices.places.client.helper.HexHmacSha1Generator;
 
-public class AuthorizationBuilderImplTest {
+public class AuthorizationHeaderBuilderImplTest {
 	
 	private static final String RFC1132DATE = "rfc1132date";
 	private static final String URI = "uri";
@@ -27,7 +27,7 @@ public class AuthorizationBuilderImplTest {
 
 	private HexHmacSha1Generator mockedHexHmacSha1Generator;
 	private Base64Encoder mockedBase64Encoder;
-	private AuthorizationBuilderImpl authorizationBuilder;
+	private AuthorizationHeaderBuilderImpl authorizationBuilder;
 	private String authorizationBuilt;
 
 	@Before
@@ -35,7 +35,7 @@ public class AuthorizationBuilderImplTest {
 		mockedHexHmacSha1Generator = mock(HexHmacSha1Generator.class);
 		mockedBase64Encoder = mock(Base64Encoder.class);
 		
-		authorizationBuilder = new AuthorizationBuilderImpl(mockedHexHmacSha1Generator, mockedBase64Encoder);
+		authorizationBuilder = new AuthorizationHeaderBuilderImpl(mockedHexHmacSha1Generator, mockedBase64Encoder);
 	}
 	
 	@Test
@@ -66,13 +66,13 @@ public class AuthorizationBuilderImplTest {
 		verify(mockedBase64Encoder, times(1)).encode("license-login:signature-built");
 	}
 
-	private AuthorizationBuilderImplTest givenSignatureWasGenerated() throws InvalidKeyException, NoSuchAlgorithmException {
+	private AuthorizationHeaderBuilderImplTest givenSignatureWasGenerated() throws InvalidKeyException, NoSuchAlgorithmException {
 		when(mockedHexHmacSha1Generator.generateFor(anyString(), anyString()))
 			.thenReturn(SIGNATURE_BUILT);
 		return this;
 	}
 	
-	private AuthorizationBuilderImplTest andAuthorizationBaseWasEncoded() throws Exception {
+	private AuthorizationHeaderBuilderImplTest andAuthorizationBaseWasEncoded() throws Exception {
 		when(mockedBase64Encoder.encode(anyString()))
 			.thenReturn(BASE64_AUTHORIZATION_BUILT);
 		return this;

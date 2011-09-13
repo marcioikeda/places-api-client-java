@@ -4,7 +4,7 @@ public class RequestAuthorization {
 	private String authorization;
 	private String dateInRfc1132;
 	private String uri;
-	
+
 	public void setAuthorization(String authorization) {
 		this.authorization = authorization;
 	}

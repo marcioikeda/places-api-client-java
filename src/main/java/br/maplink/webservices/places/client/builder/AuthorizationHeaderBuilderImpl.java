@@ -6,14 +6,14 @@ import java.security.NoSuchAlgorithmException;
 import br.maplink.webservices.places.client.helper.Base64Encoder;
 import br.maplink.webservices.places.client.helper.HexHmacSha1Generator;
 
-public class AuthorizationBuilderImpl implements AuthorizationBuilder {
+public class AuthorizationHeaderBuilderImpl implements AuthorizationHeaderBuilder {
 
 	private static final String AUTHORIZATION_TEMPLATE = "MAPLINKWS %1$s";
 	private static final String SIGNATURE_TEMPLATE = "GET\n%1$s\n%2$s\n%3$s";
 	private final HexHmacSha1Generator hexHmaxSha1Generator;
 	private final Base64Encoder base64Encoder;
 	
-	public AuthorizationBuilderImpl(
+	public AuthorizationHeaderBuilderImpl(
 			HexHmacSha1Generator hexHmaxSha1Generator,
 			Base64Encoder base64Encoder) {
 				this.hexHmaxSha1Generator = hexHmaxSha1Generator;
