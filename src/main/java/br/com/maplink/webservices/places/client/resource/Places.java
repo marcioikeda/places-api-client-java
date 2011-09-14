@@ -20,6 +20,9 @@ public class Places {
 	@XStreamAlias("total-found")
 	private int totalFound;
 	
+	@XStreamAlias("start-index")
+	private int startIndex;
+	
 	@XStreamImplicit(itemFieldName="link")
 	private List<AtomLink> links;
 
@@ -45,5 +48,13 @@ public class Places {
 
 	public void setLinks(List<AtomLink> links) {
 		this.links = links;
+	}
+
+	public void setStartIndex(int startIndex) {
+		this.startIndex = startIndex;
+	}
+
+	public int getStartIndex() {
+		return startIndex;
 	}
 }

@@ -23,16 +23,13 @@ public class PlacesConverterImpl implements PlacesConverter {
 	}
 	
 	private String extractAtomLinkPath(List<AtomLink> links, String rel) {
-		String path = ""; 
-		
 		for(AtomLink link : links) {
-			if(link.getRel() == rel) {
-				path = link.getHref(); 
+			if(link.getRel().equalsIgnoreCase(rel)) {
+				return link.getHref();
 			}
-			break;
 		}
 		
-		return path;
+		return "";
 	}
 
 	private List<Place> toEntity(List<br.com.maplink.webservices.places.client.resource.Place> resources) {
