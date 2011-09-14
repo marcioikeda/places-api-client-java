@@ -14,7 +14,8 @@ placesApiRequest.setLicenseKey("chave-da-sua-licença");
 
 h3. Pesquisando locais
 
-bc.. PlaceSearcher placeSearcher = new PlaceSearcherImpl(); // para todas as requisições de locais você precisará de um PlaceSearcher
+bc.. // para todas as requisições de locais você precisará de um PlaceSearcher
+PlaceSearcher placeSearcher = new PlaceSearcherImpl();
 
 h4. Por Raio
 
@@ -37,7 +38,8 @@ bc.. PlacesResult result =
 
 h3. Pesquisando categorias
 
-bc.. CategorySearcher categorySearcher = new CategorySearcherImpl(); // para todas as requisições de categoria você precisará de um CategorySearcher
+bc.. // para todas as requisições de categoria você precisará de um CategorySearcher
+CategorySearcher categorySearcher = new CategorySearcherImpl();
 
 h4. Todas as categorias (disponíveis no pacote da sua licença)
 
