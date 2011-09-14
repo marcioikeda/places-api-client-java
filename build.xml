@@ -3,10 +3,11 @@
 	<property file="build.properties" />
 
 	<path id="test.class.path">
-		<pathelement location="${lib.dir}" />
-		<fileset dir="${lib.dir}">
-			<include name="**/*.jar" />
-		</fileset>
+		<fileset dir="${lib.test.dir}" includes="**/*.jar" />
+	</path>
+
+	<path id="src.class.path">
+		<fileset dir="${lib.src.dir}" includes="**/*.jar" />
 	</path>
 
 	<target name="clean">
@@ -24,7 +25,9 @@
 	</target>
 
 	<target name="compile" depends="prepare">
-		<javac debug="on" srcdir="${src.dir}" destdir="${temp.dir.classes}" includes="**/*" />
+		<javac debug="on" srcdir="${src.dir}" destdir="${temp.dir.classes}" includes="**/*">
+			<classpath refid="src.class.path" />
+		</javac>
 	</target>
 	
 	<target name="compile-unit-tests" depends="compile">
@@ -33,6 +36,7 @@
 				<pathelement path="${temp.dir.classes}" />
 			</classpath>
 			<classpath refid="test.class.path" />
+			<classpath refid="src.class.path" />
 		</javac>
 	</target>
 	
@@ -43,6 +47,7 @@
 				<pathelement path="${temp.dir.tests.unit.classes}" />
 			</classpath>
 			<classpath refid="test.class.path" />
+			<classpath refid="src.class.path" />
 			
 			<formatter type="brief" usefile="false" />
 			
@@ -62,6 +67,7 @@
 			basedir="${temp.dir.classes}" 
 			excludes="**/*Test.class">
 			<fileset file="LICENSE" />
+			<zipgroupfileset dir="${lib.src.dir}" includes="**/*.jar" />
 		</jar>
 	</target>
 
