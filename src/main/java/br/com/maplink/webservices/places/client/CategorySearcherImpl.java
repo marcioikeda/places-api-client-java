@@ -7,13 +7,29 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import br.com.maplink.webservices.places.client.builder.ApiRequestBuilder;
+import br.com.maplink.webservices.places.client.builder.ApiRequestBuilderImpl;
+import br.com.maplink.webservices.places.client.builder.AuthorizationHeaderBuilderImpl;
+import br.com.maplink.webservices.places.client.builder.AuthorizationRfc1132DateGeneratorImpl;
+import br.com.maplink.webservices.places.client.builder.QueryStringBuilderImpl;
+import br.com.maplink.webservices.places.client.builder.RequestAuthorizationBuilderImpl;
+import br.com.maplink.webservices.places.client.builder.UriBuilderImpl;
 import br.com.maplink.webservices.places.client.converter.CategoryConverter;
+import br.com.maplink.webservices.places.client.converter.CategoryConverterImpl;
+import br.com.maplink.webservices.places.client.converter.DateConverterImpl;
 import br.com.maplink.webservices.places.client.entity.ApiRequest;
 import br.com.maplink.webservices.places.client.entity.Category;
 import br.com.maplink.webservices.places.client.entity.PlacesApiRequest;
 import br.com.maplink.webservices.places.client.exception.PlacesApiClientRequestException;
+import br.com.maplink.webservices.places.client.helper.Base64EncoderImpl;
+import br.com.maplink.webservices.places.client.helper.ClockImpl;
+import br.com.maplink.webservices.places.client.helper.HexHmacSha1GeneratorImpl;
 import br.com.maplink.webservices.places.client.resource.Categories;
+import br.com.maplink.webservices.places.client.service.HttpResponseRetrieverImpl;
 import br.com.maplink.webservices.places.client.service.ResourceRequestRetriever;
+import br.com.maplink.webservices.places.client.service.ResourceRequestRetrieverImpl;
+import br.com.maplink.webservices.places.client.wrapper.XmlSerializerWrapperImpl;
+import br.com.tealdi.httpclient.HttpClient;
+import br.com.tealdi.httpclient.builder.RequestBuilder;
 
 public class CategorySearcherImpl implements CategorySearcher {
 
@@ -21,6 +37,19 @@ public class CategorySearcherImpl implements CategorySearcher {
 	private final ResourceRequestRetriever resourceRetriever;
 	private final CategoryConverter categoryConverter;
 
+	public CategorySearcherImpl() {
+		this(
+			new ApiRequestBuilderImpl(),
+			new ResourceRequestRetrieverImpl(
+					new RequestAuthorizationBuilderImpl(
+							new AuthorizationRfc1132DateGeneratorImpl(new ClockImpl(), new DateConverterImpl()),
+							new UriBuilderImpl(new QueryStringBuilderImpl()),
+							new AuthorizationHeaderBuilderImpl(new HexHmacSha1GeneratorImpl(), new Base64EncoderImpl())),
+					new HttpResponseRetrieverImpl(new RequestBuilder(), new HttpClient()),
+					new XmlSerializerWrapperImpl()),
+			new CategoryConverterImpl());
+	}
+	
 	public CategorySearcherImpl(
 			ApiRequestBuilder apiRequestBuilder,
 			ResourceRequestRetriever resourceRetriever,
