@@ -31,7 +31,8 @@ public class PlaceSearcherImplTest {
 	private static final double LONGITUDE = 46.41;
 	private static final String TERM = "term";
 	private static final int CATEGORY = 42;
-	private PlaceSearcherImpl searcher;
+	private static final String PAGINATION_PATH = "pagination-path";
+	private PlaceSearcher searcher;
 	private ApiRequestBuilder mockedApiRequestBuilder;
 	private ResourceRequestRetriever mockedResourceRequestRetriever;
 	private PlacesConverter mockedPlacesConverter;
@@ -213,6 +214,83 @@ public class PlaceSearcherImplTest {
 			.toEntity(resourceRetrieved);
 	}
 
+	@Test
+	public void shouldSearchPlacesForPaginationPath() throws Exception {
+		givenApiRequestCanBeBuilt()
+			.andResourceWasRetrieved()
+			.andResourceWasConverted()
+			.whenSearchingPlacesForPaginationPath();
+		
+		assertThat(placesFound)
+			.isEqualTo(convertedPlaces);
+	}
+	
+	@Test
+	public void shouldCreateApiRequestWithHostWhenSearchingPlacesForPaginationPath() throws Exception {
+		givenApiRequestCanBeBuilt()
+			.andResourceWasRetrieved()
+			.andResourceWasConverted()
+			.whenSearchingPlacesForPaginationPath();
+		
+		verify(mockedApiRequestBuilder, times(1))
+			.withHost(HOST);
+	}
+	
+	@Test
+	public void shouldCreateApiRequestWithPathAndQueryWhenSearchingPlacesForPaginationPath() throws Exception {
+		givenApiRequestCanBeBuilt()
+		.andResourceWasRetrieved()
+		.andResourceWasConverted()
+		.whenSearchingPlacesForPaginationPath();
+		
+		verify(mockedApiRequestBuilder, times(1))
+			.withPathAndQuery(PAGINATION_PATH);
+	}
+	
+	@Test
+	public void shouldCreateApiRequestWithoutPathWhenSearchingPlacesForPaginationPath() throws Exception {
+		givenApiRequestCanBeBuilt()
+			.andResourceWasRetrieved()
+			.andResourceWasConverted()
+			.whenSearchingPlacesForPaginationPath();
+		
+		verify(mockedApiRequestBuilder, times(0))
+			.withPath("/places/byradius");
+	}
+
+	@Test
+	public void shouldBuildApiRequestWhenSerachingPlacesForPaginationPath() throws Exception {
+		givenApiRequestCanBeBuilt()
+			.andResourceWasRetrieved()
+			.andResourceWasConverted()
+			.whenSearchingPlacesForPaginationPath();
+		
+		verify(mockedApiRequestBuilder, times(1))
+			.build();
+	}
+	
+	@Test
+	public void shouldRetrieveResourceWhenSerachingPlacesForPaginationPath() throws Exception {
+		givenApiRequestCanBeBuilt()
+			.andResourceWasRetrieved()
+			.andResourceWasConverted()
+			.whenSearchingPlacesForPaginationPath();
+		
+		verify(mockedResourceRequestRetriever, times(1))
+			.retrieve(Places.class, apiRequestBuilt);
+	}
+	
+	@Test
+	public void shouldConvertResourceWhenSerachingPlacesForPaginationPath() throws Exception {
+		givenApiRequestCanBeBuilt()
+			.andResourceWasRetrieved()
+			.andResourceWasConverted()
+			.whenSearchingPlacesByRadius();
+		
+		verify(mockedPlacesConverter, times(1))
+			.toEntity(resourceRetrieved);
+	}
+	
 	private PlaceSearcherImplTest givenApiRequestCanBeBuilt() {
 		apiRequestBuilt = new ApiRequest();
 		
@@ -221,6 +299,8 @@ public class PlaceSearcherImplTest {
 		when(mockedApiRequestBuilder.withLicenseInfo(anyString(), anyString()))
 			.thenReturn(mockedApiRequestBuilder);
 		when(mockedApiRequestBuilder.withPath(anyString()))
+			.thenReturn(mockedApiRequestBuilder);
+		when(mockedApiRequestBuilder.withPathAndQuery(anyString()))
 			.thenReturn(mockedApiRequestBuilder);
 		when(mockedApiRequestBuilder.withParameter(anyString(), anyString()))
 			.thenReturn(mockedApiRequestBuilder);
@@ -250,6 +330,12 @@ public class PlaceSearcherImplTest {
 		createDefaultRequest();
 		
 		placesFound = searcher.byRadius(placesApiRequest, placeRequestArgumenent);
+	}
+	
+	private void whenSearchingPlacesForPaginationPath() throws Exception {
+		createDefaultRequest();
+		
+		placesFound = searcher.forPaginationPath(placesApiRequest, PAGINATION_PATH);
 	}
 	
 	private void whenSearchingPlacesByRadiusWithFilterTerm() throws Exception {

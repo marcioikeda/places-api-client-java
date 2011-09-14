@@ -65,10 +65,25 @@ public class PlaceSearcherImpl implements PlaceSearcher {
 		ApiRequest requestBuilt =
 			createRequest(placesApiRequest, placeRequestArgumenent);
 			
+		return convertThisRequestIntoEntity(requestBuilt);
+	}
+
+	@Override
+	public PlacesResult forPaginationPath(PlacesApiRequest placesApiRequest, String paginationPath) 
+	throws InvalidKeyException, NoSuchAlgorithmException, MalformedURLException, IOException, PlacesApiClientRequestException {
+		ApiRequestBuilder builder = createMinimalApiRequestBuilder(placesApiRequest);
+		
+		return convertThisRequestIntoEntity(
+				builder.withPathAndQuery(paginationPath).build());
+	}
+
+	private PlacesResult convertThisRequestIntoEntity(ApiRequest requestBuilt)
+			throws InvalidKeyException, NoSuchAlgorithmException,
+			MalformedURLException, IOException, PlacesApiClientRequestException {
 		return placesConverter.toEntity(
 					resourceRetriever.retrieve(Places.class, requestBuilt));
 	}
-	
+		
 	private ApiRequest createRequest(PlacesApiRequest placesApiRequest, PlaceRequestArgument placeRequestArgumenent) {
 		ApiRequestBuilder builder = createDefaultApiRequestBuilder(placesApiRequest, placeRequestArgumenent);
 		insertFilterTerm(builder, placeRequestArgumenent);
@@ -100,12 +115,17 @@ public class PlaceSearcherImpl implements PlaceSearcher {
 	private ApiRequestBuilder createDefaultApiRequestBuilder(
 			PlacesApiRequest placesApiRequest,
 			PlaceRequestArgument placeRequestArgumenent) {
-		return apiRequestBuilder
-			.withHost(placesApiRequest.getHost())
+		return createMinimalApiRequestBuilder(placesApiRequest)
 			.withPath("/places/byradius")
-			.withLicenseInfo(placesApiRequest.getLicenseLogin(), placesApiRequest.getLicenseKey())
 			.withParameter("radius", Double.toString(placeRequestArgumenent.getRadius()))
 			.withParameter("latitude", Double.toString(placeRequestArgumenent.getLatitude()))
 			.withParameter("longitude", Double.toString(placeRequestArgumenent.getLongitude()));
+	}
+
+	private ApiRequestBuilder createMinimalApiRequestBuilder(
+			PlacesApiRequest placesApiRequest) {
+		return apiRequestBuilder
+			.withHost(placesApiRequest.getHost())
+			.withLicenseInfo(placesApiRequest.getLicenseLogin(), placesApiRequest.getLicenseKey());
 	}
 }

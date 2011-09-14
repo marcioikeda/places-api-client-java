@@ -17,4 +17,8 @@ public interface PlaceSearcher {
 			throws InvalidKeyException, NoSuchAlgorithmException,
 			MalformedURLException, IOException, PlacesApiClientRequestException;
 
+	public abstract PlacesResult forPaginationPath(PlacesApiRequest placesApiRequest, String paginationPath)
+			throws InvalidKeyException, NoSuchAlgorithmException,
+			MalformedURLException, IOException, PlacesApiClientRequestException;
+
 }
