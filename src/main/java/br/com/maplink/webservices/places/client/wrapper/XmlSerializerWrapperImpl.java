@@ -2,6 +2,7 @@ package br.com.maplink.webservices.places.client.wrapper;
 
 import br.com.maplink.webservices.places.client.resource.Categories;
 import br.com.maplink.webservices.places.client.resource.Category;
+import br.com.maplink.webservices.places.client.resource.Place;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
@@ -14,6 +15,7 @@ public class XmlSerializerWrapperImpl implements XmlSerializerWrapper {
 		xstream = new XStream(new DomDriver("UTF-8"));
 		xstream.processAnnotations(Category.class);
 		xstream.processAnnotations(Categories.class);
+		xstream.processAnnotations(Place.class);
 	}
 	
 	@Override
