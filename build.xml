@@ -13,6 +13,7 @@
 	<target name="clean">
 		<delete includeemptydirs="true" verbose="true" failonerror="false">
 			<fileset dir="${temp.dir}" includes="**/*"/>
+			<fileset dir="${package.dir}" includes="**/*"/>
 		</delete>
 	</target>
 
@@ -59,14 +60,12 @@
 	</target>
 	
 	<target name="generate-jar" depends="run-unit-tests">
-		<tstamp>
-			<format property="package.name.with.timestamp" pattern="'${package.file}-'yyyyMMddHHmmss'.jar'" />
-		</tstamp>
-
-		<jar destfile="${package.name.with.timestamp}" 
+		<echo file="${temp.dir.classes}/VERSION">${package.name} version: ${version}</echo>
+		<jar destfile="${package.file}-${version}.jar" 
 			basedir="${temp.dir.classes}" 
 			excludes="**/*Test.class">
 			<fileset file="LICENSE" />
+			<fileset file="VERSION" />
 			<zipgroupfileset dir="${lib.src.dir}" includes="**/*.jar" />
 		</jar>
 	</target>
