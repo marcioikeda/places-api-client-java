@@ -2,19 +2,19 @@ h1. Client Java para acesso aos Webservices de locais do Maplink
 
 h2. Como usar
 
-Para utilizar o client, você precisará passar um PlaceApiRequest com os dados de sua licença.
+Para utilizar o client, vocÃª precisarÃ¡ passar um PlaceApiRequest com os dados de sua licenÃ§a.
 
 h3. Criando um PlaceApiRequest
 
 bc.. PlacesApiRequest placesApiRequest = new PlacesApiRequest();
 		
 placesApiRequest.setHost("http://url-do-webservice-sem-a-ultima-barra");
-placesApiRequest.setLicenseLogin("login-da-sua-licença");
-placesApiRequest.setLicenseKey("chave-da-sua-licença");
+placesApiRequest.setLicenseLogin("login-da-sua-licenÃ§a");
+placesApiRequest.setLicenseKey("chave-da-sua-licenÃ§a");
 
 h3. Pesquisando locais
 
-bc.. PlaceSearcher placeSearcher = new PlaceSearcherImpl(); // para todas as requisições de locais você precisará de um PlaceSearcher
+bc.. PlaceSearcher placeSearcher = new PlaceSearcherImpl(); // para todas as requisiÃ§Ãµes de locais vocÃª precisarÃ¡ de um PlaceSearcher
 
 h4. Por Raio
 
@@ -28,7 +28,7 @@ placeRequestArgumenent.setFilterCategory(42); // opcional
 
 PlacesResult result = placeSearcher.byRadius(placesApiRequest, placeRequestArgumenent);
 
-h4. Paginação
+h4. PaginaÃ§Ã£o
 
 bc.. PlacesResult result = 
 	placeSearcher.forPaginationPath(
@@ -37,8 +37,8 @@ bc.. PlacesResult result =
 
 h3. Pesquisando categorias
 
-bc.. CategorySearcher categorySearcher = new CategorySearcherImpl(); // para todas as requisições de categoria você precisará de um CategorySearcher
+bc.. CategorySearcher categorySearcher = new CategorySearcherImpl(); // para todas as requisiÃ§Ãµes de categoria vocÃª precisarÃ¡ de um CategorySearcher
 
-h4. Todas as categorias (disponíveis no pacote da sua licença)
+h4. Todas as categorias (disponÃ­veis no pacote da sua licenÃ§a)
 
 bc.. List<Category> categoriesFound = categorySearcher.all(placesApiRequest);
