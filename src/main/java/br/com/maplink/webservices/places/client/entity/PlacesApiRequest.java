@@ -6,27 +6,27 @@ public class PlacesApiRequest {
 	private String licenseLogin;
 	private String licenseKey;
 	
-	private void setHost(String host) {
+	public void setHost(String host) {
 		this.host = host;
 	}
 	
-	private String getHost() {
+	public String getHost() {
 		return host;
 	}
 	
-	private void setLicenseLogin(String licenseLogin) {
+	public void setLicenseLogin(String licenseLogin) {
 		this.licenseLogin = licenseLogin;
 	}
 	
-	private String getLicenseLogin() {
+	public String getLicenseLogin() {
 		return licenseLogin;
 	}
 	
-	private void setLicenseKey(String licenseKey) {
+	public void setLicenseKey(String licenseKey) {
 		this.licenseKey = licenseKey;
 	}
 	
-	private String getLicenseKey() {
+	public String getLicenseKey() {
 		return licenseKey;
 	}
 }
