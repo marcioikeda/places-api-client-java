@@ -27,7 +27,7 @@ placeRequestArgumenent.setLongitude(-46.72492);
 placeRequestArgumenent.setFilterTerm("termo para filtro"); // opcional
 placeRequestArgumenent.setFilterCategory(42); // opcional
 
-PlacesResult result = placeSearcher.byRadius(placesApiRequest, placeRequestArgumenent);
+PlacesResult result = placeSearcher.byRadius(placesApiRequest, placeRequestArgument);
 
 h4. Paginação
 
