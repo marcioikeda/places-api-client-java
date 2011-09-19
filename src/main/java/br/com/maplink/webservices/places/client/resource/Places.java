@@ -1,10 +1,10 @@
 package br.com.maplink.webservices.places.client.resource;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @XStreamAlias("places")
 public class Places {

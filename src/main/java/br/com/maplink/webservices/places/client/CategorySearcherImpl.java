@@ -1,18 +1,6 @@
 package br.com.maplink.webservices.places.client;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.util.List;
-
-import br.com.maplink.webservices.places.client.builder.ApiRequestBuilder;
-import br.com.maplink.webservices.places.client.builder.ApiRequestBuilderImpl;
-import br.com.maplink.webservices.places.client.builder.AuthorizationHeaderBuilderImpl;
-import br.com.maplink.webservices.places.client.builder.AuthorizationRfc1132DateGeneratorImpl;
-import br.com.maplink.webservices.places.client.builder.QueryStringBuilderImpl;
-import br.com.maplink.webservices.places.client.builder.RequestAuthorizationBuilderImpl;
-import br.com.maplink.webservices.places.client.builder.UriBuilderImpl;
+import br.com.maplink.webservices.places.client.builder.*;
 import br.com.maplink.webservices.places.client.converter.CategoryConverter;
 import br.com.maplink.webservices.places.client.converter.CategoryConverterImpl;
 import br.com.maplink.webservices.places.client.converter.DateConverterImpl;
@@ -30,6 +18,11 @@ import br.com.maplink.webservices.places.client.service.ResourceRequestRetriever
 import br.com.maplink.webservices.places.client.wrapper.XmlSerializerWrapperImpl;
 import br.com.tealdi.httpclient.HttpClient;
 import br.com.tealdi.httpclient.builder.RequestBuilder;
+
+import java.io.IOException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 public class CategorySearcherImpl implements CategorySearcher {
 
@@ -62,7 +55,7 @@ public class CategorySearcherImpl implements CategorySearcher {
 
 	@Override
 	public List<Category> all(PlacesApiRequest placeApiRequest) 
-	throws InvalidKeyException, NoSuchAlgorithmException, MalformedURLException, IOException, PlacesApiClientRequestException {
+	throws InvalidKeyException, NoSuchAlgorithmException, IOException, PlacesApiClientRequestException {
 		ApiRequest request = 
 			apiRequestBuilder
 				.withHost(placeApiRequest.getHost())

@@ -1,12 +1,11 @@
 package br.com.maplink.webservices.places.client.resource;
 
-import static org.fest.assertions.Assertions.assertThat;
-
+import br.com.maplink.webservices.places.client.wrapper.XmlSerializerWrapper;
+import br.com.maplink.webservices.places.client.wrapper.XmlSerializerWrapperImpl;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.maplink.webservices.places.client.wrapper.XmlSerializerWrapper;
-import br.com.maplink.webservices.places.client.wrapper.XmlSerializerWrapperImpl;
+import static org.fest.assertions.Assertions.assertThat;
 
 public class PlaceTest {
 

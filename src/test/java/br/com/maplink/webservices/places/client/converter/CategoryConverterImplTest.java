@@ -1,14 +1,12 @@
 package br.com.maplink.webservices.places.client.converter;
 
-import static org.fest.assertions.Assertions.assertThat;
+import br.com.maplink.webservices.places.client.entity.Category;
+import br.com.maplink.webservices.places.client.resource.Categories;
+import org.junit.Test;
 
 import java.util.List;
 
-import org.junit.Test;
-
-import br.com.maplink.webservices.places.client.converter.CategoryConverterImpl;
-import br.com.maplink.webservices.places.client.entity.Category;
-import br.com.maplink.webservices.places.client.resource.Categories;
+import static org.fest.assertions.Assertions.assertThat;
 
 public class CategoryConverterImplTest {
 

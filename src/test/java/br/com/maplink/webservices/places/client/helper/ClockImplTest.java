@@ -1,12 +1,10 @@
 package br.com.maplink.webservices.places.client.helper;
 
-import static org.fest.assertions.Assertions.assertThat;
+import org.junit.Test;
 
 import java.util.GregorianCalendar;
 
-import org.junit.Test;
-
-import br.com.maplink.webservices.places.client.helper.ClockImpl;
+import static org.fest.assertions.Assertions.assertThat;
 
 public class ClockImplTest {
 

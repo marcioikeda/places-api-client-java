@@ -1,18 +1,7 @@
 package br.com.maplink.webservices.places.client;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-
 import br.com.maplink.webservices.places.client.argument.PlaceRequestArgument;
-import br.com.maplink.webservices.places.client.builder.ApiRequestBuilder;
-import br.com.maplink.webservices.places.client.builder.ApiRequestBuilderImpl;
-import br.com.maplink.webservices.places.client.builder.AuthorizationHeaderBuilderImpl;
-import br.com.maplink.webservices.places.client.builder.AuthorizationRfc1132DateGeneratorImpl;
-import br.com.maplink.webservices.places.client.builder.QueryStringBuilderImpl;
-import br.com.maplink.webservices.places.client.builder.RequestAuthorizationBuilderImpl;
-import br.com.maplink.webservices.places.client.builder.UriBuilderImpl;
+import br.com.maplink.webservices.places.client.builder.*;
 import br.com.maplink.webservices.places.client.converter.DateConverterImpl;
 import br.com.maplink.webservices.places.client.converter.PlacesConverter;
 import br.com.maplink.webservices.places.client.converter.PlacesConverterImpl;
@@ -30,6 +19,10 @@ import br.com.maplink.webservices.places.client.service.ResourceRequestRetriever
 import br.com.maplink.webservices.places.client.wrapper.XmlSerializerWrapperImpl;
 import br.com.tealdi.httpclient.HttpClient;
 import br.com.tealdi.httpclient.builder.RequestBuilder;
+
+import java.io.IOException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 
 public class PlaceSearcherImpl implements PlaceSearcher {
 	
@@ -58,19 +51,18 @@ public class PlaceSearcherImpl implements PlaceSearcher {
 				this.resourceRetriever = resourceRetriever;
 				this.placesConverter = placesConverter;
 	}
-	
-	@Override
-	public PlacesResult byRadius(PlacesApiRequest placesApiRequest, PlaceRequestArgument placeRequestArgumenent) 
-		throws InvalidKeyException, NoSuchAlgorithmException, MalformedURLException, IOException, PlacesApiClientRequestException {
+
+	public PlacesResult byRadius(PlacesApiRequest placesApiRequest, PlaceRequestArgument requestArgument)
+		throws InvalidKeyException, NoSuchAlgorithmException, IOException, PlacesApiClientRequestException {
 		ApiRequest requestBuilt =
-			createRequest(placesApiRequest, placeRequestArgumenent);
+			createRequest(placesApiRequest, requestArgument);
 			
 		return convertThisRequestIntoEntity(requestBuilt);
 	}
 
-	@Override
+
 	public PlacesResult forPaginationPath(PlacesApiRequest placesApiRequest, String paginationPath) 
-	throws InvalidKeyException, NoSuchAlgorithmException, MalformedURLException, IOException, PlacesApiClientRequestException {
+	throws InvalidKeyException, NoSuchAlgorithmException, IOException, PlacesApiClientRequestException {
 		ApiRequestBuilder builder = createMinimalApiRequestBuilder(placesApiRequest);
 		
 		return convertThisRequestIntoEntity(
@@ -79,7 +71,7 @@ public class PlaceSearcherImpl implements PlaceSearcher {
 
 	private PlacesResult convertThisRequestIntoEntity(ApiRequest requestBuilt)
 			throws InvalidKeyException, NoSuchAlgorithmException,
-			MalformedURLException, IOException, PlacesApiClientRequestException {
+			IOException, PlacesApiClientRequestException {
 		return placesConverter.toEntity(
 					resourceRetriever.retrieve(Places.class, requestBuilt));
 	}
@@ -97,7 +89,7 @@ public class PlaceSearcherImpl implements PlaceSearcher {
 			PlaceRequestArgument placeRequestArgumenent) {
 		String filterTerm = placeRequestArgumenent.getFilterTerm();
 		
-		if(filterTerm != null && filterTerm != "") {
+		if(filterTerm != null && !filterTerm.equals("")) {
 			builder.withParameter("term", filterTerm);
 		}
 	}

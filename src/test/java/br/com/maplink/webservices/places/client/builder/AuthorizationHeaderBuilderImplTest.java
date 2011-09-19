@@ -1,21 +1,16 @@
 package br.com.maplink.webservices.places.client.builder;
 
-import static org.fest.assertions.Assertions.assertThat;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import br.com.maplink.webservices.places.client.helper.Base64Encoder;
+import br.com.maplink.webservices.places.client.helper.HexHmacSha1Generator;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import br.com.maplink.webservices.places.client.builder.AuthorizationHeaderBuilderImpl;
-import br.com.maplink.webservices.places.client.helper.Base64Encoder;
-import br.com.maplink.webservices.places.client.helper.HexHmacSha1Generator;
+import static org.fest.assertions.Assertions.assertThat;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.*;
 
 public class AuthorizationHeaderBuilderImplTest {
 	

@@ -10,7 +10,7 @@ public class QueryStringBuilderImpl implements QueryStringBuilder {
 	
 	@Override
 	public String build(HashMap<String, String> parameters) throws UnsupportedEncodingException {
-		StringBuffer stringBuffer = new StringBuffer();
+		StringBuilder stringBuffer = new StringBuilder();
 		
 		Iterator<Map.Entry<String, String>> iterator = parameters.entrySet().iterator();
 		

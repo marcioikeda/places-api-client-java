@@ -1,12 +1,12 @@
 package br.com.maplink.webservices.places.client.converter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import br.com.maplink.webservices.places.client.entity.Place;
 import br.com.maplink.webservices.places.client.entity.PlacesResult;
 import br.com.maplink.webservices.places.client.resource.AtomLink;
 import br.com.maplink.webservices.places.client.resource.Places;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlacesConverterImpl implements PlacesConverter {
 

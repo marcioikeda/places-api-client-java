@@ -3,9 +3,6 @@ package br.com.maplink.webservices.places.client.helper;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.maplink.webservices.places.client.helper.Base64Encoder;
-import br.com.maplink.webservices.places.client.helper.Base64EncoderImpl;
-
 import static org.fest.assertions.Assertions.assertThat;
 
 public class Base64EncoderImplTest {

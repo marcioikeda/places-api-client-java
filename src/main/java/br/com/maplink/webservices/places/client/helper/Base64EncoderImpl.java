@@ -1,9 +1,9 @@
 package br.com.maplink.webservices.places.client.helper;
 
-import java.io.IOException;
-
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
+
+import java.io.IOException;
 
 public class Base64EncoderImpl implements Base64Encoder {
 

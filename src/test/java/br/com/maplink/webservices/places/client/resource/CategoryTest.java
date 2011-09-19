@@ -1,12 +1,10 @@
 package br.com.maplink.webservices.places.client.resource;
 
-import static org.fest.assertions.Assertions.assertThat;
-
-import org.junit.Test;
-
-import br.com.maplink.webservices.places.client.resource.Category;
 import br.com.maplink.webservices.places.client.wrapper.XmlSerializerWrapper;
 import br.com.maplink.webservices.places.client.wrapper.XmlSerializerWrapperImpl;
+import org.junit.Test;
+
+import static org.fest.assertions.Assertions.assertThat;
 
 public class CategoryTest {
 	

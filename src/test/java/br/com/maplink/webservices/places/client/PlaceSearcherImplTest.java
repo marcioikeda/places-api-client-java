@@ -1,17 +1,5 @@
 package br.com.maplink.webservices.places.client;
 
-import static org.fest.assertions.Assertions.assertThat;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Matchers.isA;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
-import org.junit.Before;
-import org.junit.Test;
-
 import br.com.maplink.webservices.places.client.argument.PlaceRequestArgument;
 import br.com.maplink.webservices.places.client.builder.ApiRequestBuilder;
 import br.com.maplink.webservices.places.client.converter.PlacesConverter;
@@ -20,6 +8,14 @@ import br.com.maplink.webservices.places.client.entity.PlacesApiRequest;
 import br.com.maplink.webservices.places.client.entity.PlacesResult;
 import br.com.maplink.webservices.places.client.resource.Places;
 import br.com.maplink.webservices.places.client.service.ResourceRequestRetriever;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.fest.assertions.Assertions.assertThat;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Matchers.isA;
+import static org.mockito.Mockito.*;
 
 public class PlaceSearcherImplTest {
 

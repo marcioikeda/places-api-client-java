@@ -1,20 +1,15 @@
 package br.com.maplink.webservices.places.client.builder;
 
-import static org.fest.assertions.Assertions.assertThat;
-import static org.mockito.Matchers.isA;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
-import java.util.GregorianCalendar;
-
+import br.com.maplink.webservices.places.client.converter.DateConverter;
+import br.com.maplink.webservices.places.client.helper.Clock;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.maplink.webservices.places.client.builder.AuthorizationRfc1132DateGeneratorImpl;
-import br.com.maplink.webservices.places.client.converter.DateConverter;
-import br.com.maplink.webservices.places.client.helper.Clock;
+import java.util.GregorianCalendar;
+
+import static org.fest.assertions.Assertions.assertThat;
+import static org.mockito.Matchers.isA;
+import static org.mockito.Mockito.*;
 
 public class AuthorizationDateInRfc1132GeneratorImplTest {
 	

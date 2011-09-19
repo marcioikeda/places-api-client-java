@@ -1,10 +1,10 @@
 package br.com.maplink.webservices.places.client.builder;
 
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-
 import br.com.maplink.webservices.places.client.helper.Base64Encoder;
 import br.com.maplink.webservices.places.client.helper.HexHmacSha1Generator;
+
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 
 public class AuthorizationHeaderBuilderImpl implements AuthorizationHeaderBuilder {
 

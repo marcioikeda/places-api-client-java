@@ -1,15 +1,12 @@
 package br.com.maplink.webservices.places.client.builder;
 
-import static org.fest.assertions.Assertions.assertThat;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import br.com.maplink.webservices.places.client.builder.QueryStringBuilder;
-import br.com.maplink.webservices.places.client.builder.QueryStringBuilderImpl;
+import static org.fest.assertions.Assertions.assertThat;
 
 public class QueryStringBuilderImplTest {
 

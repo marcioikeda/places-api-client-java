@@ -1,27 +1,21 @@
 package br.com.maplink.webservices.places.client.service;
 
-import static org.fest.assertions.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.times;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Matchers.isA;
-
-import java.io.IOException;
-import java.net.MalformedURLException;
-
-import org.junit.Before;
-import org.junit.Test;
-
 import br.com.maplink.webservices.places.client.entity.RequestAuthorization;
-import br.com.maplink.webservices.places.client.service.HttpResponseRetriever;
-import br.com.maplink.webservices.places.client.service.HttpResponseRetrieverImpl;
 import br.com.tealdi.httpclient.Header;
 import br.com.tealdi.httpclient.Request;
 import br.com.tealdi.httpclient.RequestClient;
 import br.com.tealdi.httpclient.Response;
 import br.com.tealdi.httpclient.builder.ABuilderForRequest;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+
+import static org.fest.assertions.Assertions.assertThat;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Matchers.isA;
+import static org.mockito.Mockito.*;
 
 public class HttpResponseRetrieverImplTest {
 

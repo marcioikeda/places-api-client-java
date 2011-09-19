@@ -1,10 +1,8 @@
 package br.com.maplink.webservices.places.client.entity;
 
-import static org.fest.assertions.Assertions.assertThat;
-
 import org.junit.Test;
 
-import br.com.maplink.webservices.places.client.entity.ApiRequest;
+import static org.fest.assertions.Assertions.assertThat;
 
 public class ApiRequestTest {
 

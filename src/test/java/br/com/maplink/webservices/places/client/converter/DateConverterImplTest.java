@@ -1,10 +1,8 @@
 package br.com.maplink.webservices.places.client.converter;
 
-import java.util.GregorianCalendar;
-
 import org.junit.Test;
 
-import br.com.maplink.webservices.places.client.converter.DateConverterImpl;
+import java.util.GregorianCalendar;
 
 import static org.fest.assertions.Assertions.assertThat;
 

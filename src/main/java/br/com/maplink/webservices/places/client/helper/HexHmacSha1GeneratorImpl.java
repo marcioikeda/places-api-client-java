@@ -1,10 +1,9 @@
 package br.com.maplink.webservices.places.client.helper;
 
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 
 public class HexHmacSha1GeneratorImpl implements HexHmacSha1Generator {
 
@@ -30,7 +29,7 @@ public class HexHmacSha1GeneratorImpl implements HexHmacSha1Generator {
 	}
 	
 	private String toHexString(byte[] content) {
-		StringBuffer contentInHex = new StringBuffer();
+		StringBuilder contentInHex = new StringBuilder();
 		
 		for (byte aByte : content) {
 			String convertedToHexString = Integer.toHexString(0xFF & aByte);

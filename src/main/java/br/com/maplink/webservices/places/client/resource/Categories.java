@@ -1,12 +1,10 @@
 package br.com.maplink.webservices.places.client.resource;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import br.com.maplink.webservices.places.client.resource.Category;
-
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @XStreamAlias("categories")
 public class Categories {

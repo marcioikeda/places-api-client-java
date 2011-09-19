@@ -13,3 +13,6 @@ TEST-*
 *.swp
 *.out
 *.class
+*.iml
+*.ipr
+*.iws

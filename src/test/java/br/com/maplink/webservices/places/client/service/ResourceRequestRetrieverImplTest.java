@@ -1,28 +1,21 @@
 package br.com.maplink.webservices.places.client.service;
 
-import static org.fest.assertions.Assertions.assertThat;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Matchers.isA;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.times;
-
-import org.junit.Before;
-import org.junit.Test;
-
 import br.com.maplink.webservices.places.client.builder.RequestAuthorizationBuilder;
 import br.com.maplink.webservices.places.client.entity.ApiRequest;
 import br.com.maplink.webservices.places.client.entity.RequestAuthorization;
 import br.com.maplink.webservices.places.client.exception.PlacesApiClientRequestException;
 import br.com.maplink.webservices.places.client.resource.Category;
-import br.com.maplink.webservices.places.client.service.HttpResponseRetriever;
-import br.com.maplink.webservices.places.client.service.ResourceRequestRetriever;
-import br.com.maplink.webservices.places.client.service.ResourceRequestRetrieverImpl;
 import br.com.maplink.webservices.places.client.wrapper.XmlSerializerWrapper;
 import br.com.tealdi.httpclient.Header;
 import br.com.tealdi.httpclient.Response;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.fest.assertions.Assertions.assertThat;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Matchers.isA;
+import static org.mockito.Mockito.*;
 
 public class ResourceRequestRetrieverImplTest {
 

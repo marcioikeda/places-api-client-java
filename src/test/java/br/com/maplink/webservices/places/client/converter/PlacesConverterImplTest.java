@@ -1,14 +1,13 @@
 package br.com.maplink.webservices.places.client.converter;
 
-import static org.fest.assertions.Assertions.assertThat;
-
-import org.junit.Before;
-import org.junit.Test;
-
 import br.com.maplink.webservices.places.client.entity.PlacesResult;
 import br.com.maplink.webservices.places.client.resource.AtomLink;
 import br.com.maplink.webservices.places.client.resource.Place;
 import br.com.maplink.webservices.places.client.resource.Places;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.fest.assertions.Assertions.assertThat;
 
 public class PlacesConverterImplTest {
 

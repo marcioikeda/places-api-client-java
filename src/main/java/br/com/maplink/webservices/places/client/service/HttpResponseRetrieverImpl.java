@@ -1,13 +1,12 @@
 package br.com.maplink.webservices.places.client.service;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-
 import br.com.maplink.webservices.places.client.entity.RequestAuthorization;
 import br.com.tealdi.httpclient.Request;
 import br.com.tealdi.httpclient.RequestClient;
 import br.com.tealdi.httpclient.Response;
 import br.com.tealdi.httpclient.builder.ABuilderForRequest;
+
+import java.io.IOException;
 
 public class HttpResponseRetrieverImpl implements HttpResponseRetriever {
 
@@ -22,7 +21,7 @@ public class HttpResponseRetrieverImpl implements HttpResponseRetriever {
 	}
 
 	@Override
-	public Response retrieveFor(RequestAuthorization requestAuthorization) throws MalformedURLException, IOException {
+	public Response retrieveFor(RequestAuthorization requestAuthorization) throws IOException {
 		Request request = 
 			requestBuilder
 				.forThis(requestAuthorization.getUri())

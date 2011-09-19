@@ -1,27 +1,19 @@
 package br.com.maplink.webservices.places.client.builder;
 
-import static org.fest.assertions.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.times;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Matchers.isA;
+import br.com.maplink.webservices.places.client.entity.ApiRequest;
+import br.com.maplink.webservices.places.client.entity.RequestAuthorization;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import br.com.maplink.webservices.places.client.builder.AuthorizationHeaderBuilder;
-import br.com.maplink.webservices.places.client.builder.AuthorizationRfc1132DateGenerator;
-import br.com.maplink.webservices.places.client.builder.RequestAuthorizationBuilderImpl;
-import br.com.maplink.webservices.places.client.builder.UriBuilder;
-import br.com.maplink.webservices.places.client.entity.ApiRequest;
-import br.com.maplink.webservices.places.client.entity.RequestAuthorization;
+import static org.fest.assertions.Assertions.assertThat;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Matchers.isA;
+import static org.mockito.Mockito.*;
 
 public class RequestAuthorizationBuilderImplTest {
 
