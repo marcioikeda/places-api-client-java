@@ -60,13 +60,14 @@
 		<fail if="failed-test" message="FAILING TESTS" />
 	</target>
 	
-	<target name="coverage" depends="compile-unit-tests">
+	<target name="coverage">
 		<taskdef classpathref="test.class.path" resource="tasks.properties" />
+		<delete file="cobertura.ser" verbose="false" />
 		<cobertura-instrument todir="${instrumentation.dir}">
 			<fileset dir="${temp.dir.classes}" />
 		</cobertura-instrument>
 		<junit tempdir="${temp.dir}" fork="yes" forkmode="once" printsummary="true" failureproperty="failed-test">
-			<sysproperty key="net.sourceforge.cobertura.datafile" file="${temp.dir}/cobertura.ser" />
+			<sysproperty key="net.sourceforge.cobertura.datafile" file="cobertura.ser" />
 			<classpath>
 				<pathelement path="${instrumentation.dir}" />
 				<pathelement path="${temp.dir.classes}" />
