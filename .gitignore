@@ -2,6 +2,7 @@ bin
 package
 Servers
 temp
+reports
 TEST-*
 .classpath
 .project

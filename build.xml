@@ -57,7 +57,41 @@
 				<fileset dir="${temp.dir.tests.unit.classes}" includes="**/*Test.class" />
 			</batchtest>
 		</junit>
-		<fail if="failed-test" message="Failing tests" />
+		<fail if="failed-test" message="FAILING TESTS" />
+	</target>
+	
+	<target name="coverage" depends="compile-unit-tests">
+		<taskdef classpathref="test.class.path" resource="tasks.properties" />
+		<cobertura-instrument todir="${instrumentation.dir}">
+			<fileset dir="${temp.dir.classes}" />
+		</cobertura-instrument>
+		<junit tempdir="${temp.dir}" fork="yes" forkmode="once" printsummary="true" failureproperty="failed-test">
+			<sysproperty key="net.sourceforge.cobertura.datafile" file="${temp.dir}/cobertura.ser" />
+			<classpath>
+				<pathelement path="${instrumentation.dir}" />
+				<pathelement path="${temp.dir.classes}" />
+				<pathelement path="${temp.dir.tests.unit.classes}" />
+			</classpath>
+			<classpath refid="test.class.path" />
+			<classpath refid="src.class.path" />
+			
+			<formatter type="brief" usefile="false" />
+			<formatter type="xml" />
+			
+			<batchtest fork="yes" todir="${tests.report}">
+				<fileset dir="${temp.dir.tests.unit.classes}" includes="**/*Test.class" />
+			</batchtest>
+		</junit>
+		<mkdir dir="${tests.report}/cobertura" />
+		<mkdir dir="${tests.report}/junit" />
+		<cobertura-report format="xml" destdir="${tests.report}/cobertura" srcdir="${src.dir}" />
+		<junitreport todir="${tests.report}/">
+			<fileset dir="${tests.report}">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report format="frames" todir="${tests.report}/junit" />
+		</junitreport>
+		<fail if="failed-test" message="FAILING TESTS" />
 	</target>
 	
 	<target name="generate-jar" depends="run-unit-tests">
