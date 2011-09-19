@@ -66,8 +66,10 @@
 			excludes="**/*Test.class">
 			<fileset file="LICENSE" />
 			<fileset file="VERSION" />
-			<zipgroupfileset dir="${lib.src.dir}" includes="**/*.jar" />
 		</jar>
+		<copy todir="${package.dir}/lib">
+			<path refid="src.class.path"/>
+		</copy>
 	</target>
 
 </project>
