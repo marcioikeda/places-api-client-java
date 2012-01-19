@@ -5,10 +5,12 @@ public class PlaceRequestArgument {
 	private double radius;
 	private double latitude;
 	private double longitude;
-	private String filterTerm;
-	private int filterCategory;
-	
-	public double getRadius() {
+	private String term;
+	private int category;
+    private String state;
+    private String city;
+
+    public double getRadius() {
 		return radius;
 	}
 	public void setRadius(double radius) {
@@ -26,16 +28,32 @@ public class PlaceRequestArgument {
 	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
-	public String getFilterTerm() {
-		return filterTerm;
+	public String getTerm() {
+		return term;
 	}
-	public void setFilterTerm(String filterTerm) {
-		this.filterTerm = filterTerm;
+	public void setTerm(String term) {
+		this.term = term;
 	}
-	public int getFilterCategory() {
-		return filterCategory;
+	public int getCategory() {
+		return category;
 	}
-	public void setFilterCategory(int filterCategory) {
-		this.filterCategory = filterCategory;
+	public void setCategory(int category) {
+		this.category = category;
 	}
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
 }

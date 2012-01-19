@@ -55,13 +55,27 @@ public class PlaceSearcherImpl implements PlaceSearcher {
 	public PlacesResult byRadius(PlacesApiRequest placesApiRequest, PlaceRequestArgument requestArgument)
 		throws InvalidKeyException, NoSuchAlgorithmException, IOException, PlacesApiClientRequestException {
 		ApiRequest requestBuilt =
-			createRequest(placesApiRequest, requestArgument);
+			createRequestForSearchByRadius(placesApiRequest, requestArgument);
 			
 		return convertThisRequestIntoEntity(requestBuilt);
 	}
 
 
-	public PlacesResult forPaginationPath(PlacesApiRequest placesApiRequest, String paginationPath) 
+    public PlacesResult byTerm(PlacesApiRequest placesApiRequest, PlaceRequestArgument requestArgument) throws InvalidKeyException, NoSuchAlgorithmException, IOException, PlacesApiClientRequestException {
+        ApiRequest requestBuilt =
+                createRequestForSearchByTerm(placesApiRequest, requestArgument);
+
+        return convertThisRequestIntoEntity(requestBuilt);
+    }
+
+    public PlacesResult byCategory(PlacesApiRequest placesApiRequest, PlaceRequestArgument requestArgument) throws InvalidKeyException, NoSuchAlgorithmException, IOException, PlacesApiClientRequestException {
+        ApiRequest requestBuilt =
+                createRequestForSearchByCategory(placesApiRequest, requestArgument);
+
+        return convertThisRequestIntoEntity(requestBuilt);
+    }
+
+    public PlacesResult forPaginationPath(PlacesApiRequest placesApiRequest, String paginationPath)
 	throws InvalidKeyException, NoSuchAlgorithmException, IOException, PlacesApiClientRequestException {
 		ApiRequestBuilder builder = createMinimalApiRequestBuilder(placesApiRequest);
 		
@@ -76,18 +90,48 @@ public class PlaceSearcherImpl implements PlaceSearcher {
 					resourceRetriever.retrieve(Places.class, requestBuilt));
 	}
 		
-	private ApiRequest createRequest(PlacesApiRequest placesApiRequest, PlaceRequestArgument placeRequestArgumenent) {
-		ApiRequestBuilder builder = createDefaultApiRequestBuilder(placesApiRequest, placeRequestArgumenent);
+	private ApiRequest createRequestForSearchByRadius(PlacesApiRequest placesApiRequest, PlaceRequestArgument placeRequestArgumenent) {
+		ApiRequestBuilder builder = createApiRequestBuilderForSearchByRadius(placesApiRequest, placeRequestArgumenent);
 		insertFilterTerm(builder, placeRequestArgumenent);
 		insertFilterCategory(builder, placeRequestArgumenent);
 		
 		return builder.build();
 	}
 
+	private ApiRequest createRequestForSearchByTerm(PlacesApiRequest placesApiRequest, PlaceRequestArgument placeRequestArgumenent) {
+		ApiRequestBuilder builder = createApiRequestBuilderForSearchByTerm(placesApiRequest, placeRequestArgumenent);
+        insertFilterState(builder,placeRequestArgumenent);
+        insertFilterCity(builder, placeRequestArgumenent);
+
+		return builder.build();
+	}
+
+    private void insertFilterCity(ApiRequestBuilder builder, PlaceRequestArgument placeRequestArgumenent) {
+        String filterCity = placeRequestArgumenent.getCity();
+
+        if(filterCity != null && !filterCity.equals("")) {
+            builder.withParameter("city", filterCity);
+        }
+    }
+
+    private void insertFilterState(ApiRequestBuilder builder, PlaceRequestArgument placeRequestArgumenent) {
+        String filterState = placeRequestArgumenent.getState();
+
+        if(filterState != null && !filterState.equals("")) {
+            builder.withParameter("state", filterState);
+        }
+    }
+
+    private ApiRequest createRequestForSearchByCategory(PlacesApiRequest placesApiRequest, PlaceRequestArgument placeRequestArgumenent) {
+		ApiRequestBuilder builder = createApiRequestBuilderForSearchByCategory(placesApiRequest, placeRequestArgumenent);
+
+		return builder.build();
+	}
+
 	private void insertFilterTerm(
 			ApiRequestBuilder builder,
 			PlaceRequestArgument placeRequestArgumenent) {
-		String filterTerm = placeRequestArgumenent.getFilterTerm();
+		String filterTerm = placeRequestArgumenent.getTerm();
 		
 		if(filterTerm != null && !filterTerm.equals("")) {
 			builder.withParameter("term", filterTerm);
@@ -97,21 +141,37 @@ public class PlaceSearcherImpl implements PlaceSearcher {
 	private void insertFilterCategory(
 			ApiRequestBuilder builder,
 			PlaceRequestArgument placeRequestArgumenent) {
-		int filterCategory = placeRequestArgumenent.getFilterCategory();
+		int filterCategory = placeRequestArgumenent.getCategory();
 		
 		if(filterCategory > 0) {
 			builder.withParameter("category", Integer.toString(filterCategory));
 		}
 	}
 
-	private ApiRequestBuilder createDefaultApiRequestBuilder(
-			PlacesApiRequest placesApiRequest,
-			PlaceRequestArgument placeRequestArgumenent) {
+	private ApiRequestBuilder createApiRequestBuilderForSearchByRadius(
+            PlacesApiRequest placesApiRequest,
+            PlaceRequestArgument placeRequestArgumenent) {
 		return createMinimalApiRequestBuilder(placesApiRequest)
 			.withPath("/places/byradius")
 			.withParameter("radius", Double.toString(placeRequestArgumenent.getRadius()))
 			.withParameter("latitude", Double.toString(placeRequestArgumenent.getLatitude()))
 			.withParameter("longitude", Double.toString(placeRequestArgumenent.getLongitude()));
+	}
+
+	private ApiRequestBuilder createApiRequestBuilderForSearchByTerm(
+            PlacesApiRequest placesApiRequest,
+            PlaceRequestArgument placeRequestArgumenent) {
+		return createMinimalApiRequestBuilder(placesApiRequest)
+			.withPath("/places/byterm")
+			.withParameter("term", placeRequestArgumenent.getTerm());
+    }
+
+	private ApiRequestBuilder createApiRequestBuilderForSearchByCategory(
+            PlacesApiRequest placesApiRequest,
+            PlaceRequestArgument placeRequestArgumenent) {
+		return createMinimalApiRequestBuilder(placesApiRequest)
+			.withPath("/places/bycategory")
+			.withParameter("category", Integer.toString(placeRequestArgumenent.getCategory()));
 	}
 
 	private ApiRequestBuilder createMinimalApiRequestBuilder(

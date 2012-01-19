@@ -66,6 +66,28 @@ public class PlaceSearcherImplTest {
 		assertThat(placesFound)
 			.isEqualTo(convertedPlaces);
 	}
+
+	@Test
+	public void shouldSearchPlacesByTerm() throws Exception {
+		givenApiRequestCanBeBuilt()
+			.andResourceWasRetrieved()
+			.andResourceWasConverted()
+			.whenSearchingPlacesByTerm();
+
+		assertThat(placesFound)
+			.isEqualTo(convertedPlaces);
+	}
+
+	@Test
+	public void shouldSearchPlacesByCategory() throws Exception {
+		givenApiRequestCanBeBuilt()
+			.andResourceWasRetrieved()
+			.andResourceWasConverted()
+			.whenSearchingPlacesByCategory();
+
+		assertThat(placesFound)
+			.isEqualTo(convertedPlaces);
+	}
 	
 	@Test
 	public void shouldCreateApiRequestWithHostWhenSerachingPlacesByRadius() throws Exception {
@@ -323,35 +345,57 @@ public class PlaceSearcherImplTest {
 	}
 	
 	private void whenSearchingPlacesByRadius() throws Exception {
-		createDefaultRequest();
+		createRequestForSearchByRadius();
 		
 		placesFound = searcher.byRadius(placesApiRequest, placeRequestArgumenent);
 	}
+
+	private void whenSearchingPlacesByTerm() throws Exception {
+		createRequestForSearchByTerm();
+
+		placesFound = searcher.byTerm(placesApiRequest, placeRequestArgumenent);
+	}
+
+	private void whenSearchingPlacesByCategory() throws Exception {
+		createRequestForSearchByCategory();
+
+        placesFound = searcher.byCategory(placesApiRequest, placeRequestArgumenent);
+	}
 	
 	private void whenSearchingPlacesForPaginationPath() throws Exception {
-		createDefaultRequest();
+		createRequestForSearchByRadius();
 		
 		placesFound = searcher.forPaginationPath(placesApiRequest, PAGINATION_PATH);
 	}
 	
 	private void whenSearchingPlacesByRadiusWithFilterTerm() throws Exception {
-		createDefaultRequest();
-		placeRequestArgumenent.setFilterTerm(TERM);
+		createRequestForSearchByRadius();
+		placeRequestArgumenent.setTerm(TERM);
 		
 		placesFound = searcher.byRadius(placesApiRequest, placeRequestArgumenent);
 	}
 	
 	private void whenSearchingPlacesByRadiusWithFilterCategory() throws Exception {
-		createDefaultRequest();
-		placeRequestArgumenent.setFilterCategory(CATEGORY);
+		createRequestForSearchByRadius();
+		placeRequestArgumenent.setCategory(CATEGORY);
 		
 		placesFound = searcher.byRadius(placesApiRequest, placeRequestArgumenent);
 	}
 
-	private void createDefaultRequest() {
+	private void createRequestForSearchByRadius() {
 		placeRequestArgumenent = new PlaceRequestArgument();
 		placeRequestArgumenent.setRadius(RADIUS);
 		placeRequestArgumenent.setLatitude(LATITUDE);
 		placeRequestArgumenent.setLongitude(LONGITUDE);
+	}
+
+	private void createRequestForSearchByTerm() {
+		placeRequestArgumenent = new PlaceRequestArgument();
+		placeRequestArgumenent.setTerm(TERM);
+	}
+
+    private void createRequestForSearchByCategory() {
+		placeRequestArgumenent = new PlaceRequestArgument();
+		placeRequestArgumenent.setCategory(CATEGORY);
 	}
 }

@@ -16,6 +16,16 @@ public interface PlaceSearcher {
 			throws InvalidKeyException, NoSuchAlgorithmException,
 			IOException, PlacesApiClientRequestException;
 
+	public abstract PlacesResult byTerm(PlacesApiRequest placesApiRequest,
+			PlaceRequestArgument requestArgument)
+			throws InvalidKeyException, NoSuchAlgorithmException,
+			IOException, PlacesApiClientRequestException;
+
+	public abstract PlacesResult byCategory(PlacesApiRequest placesApiRequest,
+			PlaceRequestArgument requestArgument)
+			throws InvalidKeyException, NoSuchAlgorithmException,
+			IOException, PlacesApiClientRequestException;
+
 	public abstract PlacesResult forPaginationPath(PlacesApiRequest placesApiRequest, String paginationPath)
 			throws InvalidKeyException, NoSuchAlgorithmException,
 			IOException, PlacesApiClientRequestException;

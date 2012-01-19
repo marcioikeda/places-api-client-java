@@ -7,7 +7,7 @@ Para utilizar o client, você precisará passar um PlaceApiRequest com os dados 
 h3. Criando um PlaceApiRequest
 
 bc.. PlacesApiRequest placesApiRequest = new PlacesApiRequest();
-		
+
 placesApiRequest.setHost("http://url-do-webservice-sem-a-ultima-barra");
 placesApiRequest.setLicenseLogin("login-da-sua-licença");
 placesApiRequest.setLicenseKey("chave-da-sua-licença");
@@ -24,17 +24,37 @@ bc.. PlaceRequestArgument placeRequestArgumenent = new PlaceRequestArgument();
 placeRequestArgumenent.setRadius(10.3);
 placeRequestArgumenent.setLatitude(-23.58676);
 placeRequestArgumenent.setLongitude(-46.72492);
-placeRequestArgumenent.setFilterTerm("termo para filtro"); // opcional
-placeRequestArgumenent.setFilterCategory(42); // opcional
+placeRequestArgumenent.setTerm("termo para filtro"); // opcional
+placeRequestArgumenent.setCategory(42); // opcional
 
 PlacesResult result = placeSearcher.byRadius(placesApiRequest, placeRequestArgument);
 
+h4. Por Termo
+
+bc.. PlaceRequestArgument placeRequestArgumenent = new PlaceRequestArgument();
+
+placeRequestArgumenent.setTerm("pizza");
+placeRequestArgumenent.setState("SP"); // opcional
+placeRequestArgumenent.setCity("São Paulo"); // opcional
+
+PlacesResult result = placeSearcher.byTerm(placesApiRequest, placeRequestArgument);
+
+h4. Por Categoria
+
+bc.. PlaceRequestArgument placeRequestArgumenent = new PlaceRequestArgument();
+
+placeRequestArgumenent.setCategory(42);
+placeRequestArgumenent.setState("SP"); // opcional
+placeRequestArgumenent.setCity("São Paulo"); // opcional
+
+PlacesResult result = placeSearcher.byCategory(placesApiRequest, placeRequestArgument);
+
 h4. Paginação
 
-bc.. PlacesResult result = 
-	placeSearcher.forPaginationPath(
-		placesApiRequest, 
-		placeRequestArgumenent.getNextPagePath());
+bc.. PlacesResult result =
+    placeSearcher.forPaginationPath(
+        placesApiRequest,
+        placeRequestArgumenent.getNextPagePath());
 
 h3. Pesquisando categorias
 
