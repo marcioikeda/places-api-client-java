@@ -51,6 +51,8 @@ PlacesResult result = placeSearcher.byCategory(placesApiRequest, placeRequestArg
 
 h4. Paginação
 
+Cada request traz 100 resultados. Para buscar os próximos 100, você pode usar o método "forPaginationPath":
+
 bc.. PlacesResult result =
     placeSearcher.forPaginationPath(
         placesApiRequest,
